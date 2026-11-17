@@ -72,7 +72,10 @@ describe('crypto', () => {
     expect(sealed).not.toContain('APP_USR')
     expect(open(sealed, 'key')).toBe('APP_USR-token')
     expect(open(sealed, 'other')).toBeNull()
-    expect(open(sealed.slice(0, -2) + 'xx', 'key')).toBeNull()
+    // Tampered with: the first character of the ciphertext swapped for another one.
+    const body = sealed.lastIndexOf('.') + 1
+    const swapped = sealed[body] === 'A' ? 'B' : 'A'
+    expect(open(sealed.slice(0, body) + swapped + sealed.slice(body + 1), 'key')).toBeNull()
   })
 })
 
