@@ -1,0 +1,84 @@
+{
+  "name": "@plexgg/medusa-plugin-mercadolivre",
+  "version": "0.1.0",
+  "description": "Sell your Medusa v2 catalog on Mercado Livre / Mercado Libre: listings, stock and price sync, order import, notifications and an admin screen.",
+  "license": "MIT",
+  "author": "Plex (https://plex.gg)",
+  "keywords": [
+    "medusa-v2",
+    "medusa-plugin-integration",
+    "medusa-plugin-other",
+    "mercadolivre",
+    "mercadolibre",
+    "mercado-livre",
+    "marketplace"
+  ],
+  "files": [
+    ".medusa/server",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./.medusa/server/src/modules/*": "./.medusa/server/src/modules/*/index.js",
+    "./modules/*": "./.medusa/server/src/modules/*/index.js",
+    "./admin": {
+      "import": "./.medusa/server/src/admin/index.mjs",
+      "require": "./.medusa/server/src/admin/index.js",
+      "default": "./.medusa/server/src/admin/index.js"
+    },
+    "./*": "./.medusa/server/src/*.js"
+  },
+  "scripts": {
+    "build": "medusa plugin:build",
+    "dev": "medusa plugin:develop",
+    "db:generate": "medusa plugin:db:generate",
+    "lint": "eslint src --max-warnings 0",
+    "check-types": "tsc --noEmit && tsc --noEmit -p src/admin",
+    "test": "vitest run",
+    "prepublishOnly": "medusa plugin:build",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@medusajs/admin-sdk": "2.22.2",
+    "@medusajs/cli": "2.22.2",
+    "@medusajs/framework": "2.22.2",
+    "@medusajs/icons": "2.22.2",
+    "@medusajs/medusa": "2.22.2",
+    "@medusajs/ui": "4.2.9",
+    "@swc/core": "^1.7.28",
+    "@types/node": "^22.15.3",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "ajv": "^8.20.0",
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "5.9.2",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^4.1.11"
+  },
+  "peerDependencies": {
+    "@medusajs/admin-sdk": "^2.11.0",
+    "@medusajs/framework": "^2.11.0",
+    "@medusajs/icons": "^2.11.0",
+    "@medusajs/medusa": "^2.11.0",
+    "@medusajs/ui": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evrenbunch/medusa-plugin-mercadolivre.git"
+  },
+  "homepage": "https://github.com/evrenbunch/medusa-plugin-mercadolivre#readme",
+  "bugs": {
+    "url": "https://github.com/evrenbunch/medusa-plugin-mercadolivre/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
